@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Simulador SCADA de Subestação – Download</title>
+<meta name="description" content="Simulador gratuito de SCADA de subestação para treinar manobras: arranjos de barra, intertravamentos, defeitos, alarmes, SOE e manutenção guiada.">
+<style>
+:root{
+  --bg:#eef0f2; --card:#fff; --ink:#1b1e22; --mute:#5a6370; --line:#d5d9de;
+  --live:#d7261e; --dead:#1f4fa6; --accent:#1f4fa6;
+}
+@media (prefers-color-scheme:dark){
+  :root{--bg:#1c1f23; --card:#262a30; --ink:#eceff2; --mute:#a2abb7; --line:#3a4048; --accent:#6c9cf0}
+}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 system-ui,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+header{padding:56px 0 28px}
+.bars{display:flex;gap:6px;margin-bottom:18px}
+.bars i{display:block;height:8px;border-radius:2px;width:90px}
+.bars i:nth-child(1){background:var(--live)} .bars i:nth-child(2){background:var(--dead)}
+h1{font-size:clamp(28px,5vw,44px);line-height:1.15;margin:0 0 12px}
+.lead{font-size:18px;color:var(--mute);max-width:680px;margin:0 0 26px}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px 26px;border-radius:8px}
+.btn:hover{filter:brightness(1.1)}
+.btn small{display:block;font-weight:400;opacity:.85;font-size:13px}
+.meta{margin-top:14px;font-size:14px;color:var(--mute)}
+code{background:var(--card);border:1px solid var(--line);padding:1px 6px;border-radius:4px;font-size:13px;word-break:break-all}
+section{padding:26px 0}
+h2{font-size:24px;margin:0 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+.card h3{margin:0 0 6px;font-size:16px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+figure{margin:0 0 22px}
+figure img{width:100%;border:1px solid var(--line);border-radius:10px;background:#c3c7cb}
+figcaption{font-size:14px;color:var(--mute);margin-top:6px}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+ol,ul{padding-left:22px} li{margin:4px 0}
+.note{background:var(--card);border-left:4px solid var(--live);padding:12px 16px;border-radius:6px;font-size:15px}
+footer{padding:30px 0 60px;color:var(--mute);font-size:14px;border-top:1px solid var(--line);margin-top:20px}
+a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="bars"><i></i><i></i></div>
+  <h1>Simulador SCADA de Subestação</h1>
+  <p class="lead">Treine manobras de subestação em um painel no estilo ISA: barra viva em vermelho, barra morta em azul. Escolha o arranjo, coloque um equipamento em manutenção e faça (ou deixe o simulador guiar) o procedimento correto. <b>Gratuito.</b></p>
+  <a class="btn" href="SimuladorSCADA.exe" download>Baixar para Windows<small>SimuladorSCADA.exe · ~58 MB · sem instalação</small></a>
+  <p class="meta">Windows 10/11 (64 bits). Não precisa instalar Python. SHA-256: <code>c1c493db2d0dedbc5eb076bc30c31086b4ef4c687ffceb4a7f71384873905418</code></p>
+  <p class="note" style="margin-top:18px">O executável não é assinado digitalmente. Se o Windows SmartScreen avisar, clique em <b>Mais informações → Executar assim mesmo</b>. O código-fonte está no <a href="https://github.com/nilberthsouza/SCADA-SIMULATOR">repositório</a> e você pode compilar o seu próprio exe.</p>
+</header>
+
+<section>
+  <h2>Arranjos de barra</h2>
+  <div class="grid">
+    <div class="card"><h3>Barra simples</h3><p>Simples e econômica. Qualquer manutenção em barra ou disjuntor desliga os vãos envolvidos.</p></div>
+    <div class="card"><h3>Barra principal e transferência</h3><p>O disjuntor de transferência substitui o de qualquer vão pelo by-pass.</p></div>
+    <div class="card"><h3>Barra dupla a 3 chaves</h3><p>Duas chaves de barra, disjuntor, chave de saída e vão de acoplamento.</p></div>
+    <div class="card"><h3>Barra dupla a 4 chaves</h3><p>Acrescenta a chave de by-pass, liberando o disjuntor com o acoplamento.</p></div>
+    <div class="card"><h3>Disjuntor e meio</h3><p>Três disjuntores por diâmetro e dois circuitos derivados entre eles.</p></div>
+    <div class="card"><h3>Você configura</h3><p>De 1 a 4 transformadores e de 1 a 3 linhas, com lado de média tensão (13,8 kV) completo.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>O que dá para treinar</h2>
+  <div class="grid">
+    <div class="card"><h3>Manobras com consequência</h3><p>Abrir seccionadora em carga ou fechar sobre circuito aterrado gera arco, dano ao equipamento e atuação da proteção.</p></div>
+    <div class="card"><h3>Manutenção guiada ou livre</h3><p>O simulador calcula o procedimento (transferência de carga, abertura, aterramento e etiquetas) e acompanha cada passo. No modo livre, você faz e ele verifica o isolamento.</p></div>
+    <div class="card"><h3>Aterramento e LOTO</h3><p>Seccionadoras de terra, confirmação de ausência de tensão e etiquetas de bloqueio.</p></div>
+    <div class="card"><h3>Defeitos</h3><p>Curto em barra, falha de transformador, perda de linha, disjuntor travado e sobrecarga, com reparo por equipe de campo.</p></div>
+    <div class="card"><h3>Alarmes e SOE</h3><p>Lista de alarmes com reconhecimento e sequência de eventos com data e hora em milissegundos, exportável em CSV.</p></div>
+    <div class="card"><h3>Medições em tempo real</h3><p>Tensão, frequência, corrente, potências e fator de potência nas barras energizadas.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2>Telas</h2>
+  <figure><img src="img/janela.png" alt="Janela principal com modo de manutenção guiada" loading="lazy"><figcaption>Barra dupla a 4 chaves em manutenção guiada do disjuntor 52-T1, sem interrupção de carga.</figcaption></figure>
+  <div class="shots">
+    <figure><img src="img/transferencia.png" alt="Barra principal e transferência" loading="lazy"><figcaption>Barra principal e transferência.</figcaption></figure>
+    <figure><img src="img/barra-dupla.png" alt="Barra dupla" loading="lazy"><figcaption>Barra dupla com vão de acoplamento.</figcaption></figure>
+  </div>
+  <figure><img src="img/disjuntor-e-meio.png" alt="Disjuntor e meio" loading="lazy"><figcaption>Disjuntor e meio: três diâmetros, circuitos entre os disjuntores.</figcaption></figure>
+</section>
+
+<section>
+  <h2>Como usar</h2>
+  <ol>
+    <li>Escolha o arranjo, o número de transformadores e de linhas e clique em <b>Criar / reiniciar subestação</b>.</li>
+    <li>Duplo clique em disjuntor ou seccionadora para manobrar. Clique direito abre mais opções (etiqueta, defeito, manutenção).</li>
+    <li>Use <b>Simular manutenção…</b>, escolha o equipamento e o modo (guiado ou livre).</li>
+    <li>Use <b>Simular defeito</b> para treinar a recomposição após um desarme.</li>
+  </ol>
+  <p style="color:var(--mute);font-size:14px">Ferramenta didática. Os cálculos elétricos são simplificados e os procedimentos gerados não substituem as normas e instruções de operação da sua empresa.</p>
+</section>
+
+<footer>
+  Simulador SCADA de Subestação · <a href="https://github.com/nilberthsouza/SCADA-SIMULATOR">Código-fonte no GitHub</a>
+</footer>
+</div>
+</body>
+</html>
